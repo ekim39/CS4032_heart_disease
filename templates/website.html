@@ -135,8 +135,8 @@
                 })
             
                 const final_data = 
-                    fetch("/parse", {method: 'POST', headers: {'Content-type': 'application/json'}, body: JSON.stringify(out)})
-                    .then(response => response.json();)
+                    fetch("/parse", {method: 'POST',headers: {'Content-type': 'application/json'},body: JSON.stringify(out)})
+                    .then(response => response.json())
                     .then(data => 
                         console.log("Sucess",data);
                         result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(final_data.response.json(),null,2)+ '</pre>';)
@@ -154,6 +154,7 @@
         </script>
     </body>
 </html>
+
 
 
 
