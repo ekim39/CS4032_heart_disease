@@ -139,7 +139,7 @@
                     .then(response => response.json())
                     .then(data => 
                         console.log("Sucess",data);
-                        result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(final_data.response.json(),null,2)+ '</pre>';)
+                        result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(data,null,2)+ '</pre>';)
                     .catch(error => {
                         console.error("ERROR: ", error);
                     });
@@ -154,6 +154,7 @@
         </script>
     </body>
 </html>
+
 
 
 
