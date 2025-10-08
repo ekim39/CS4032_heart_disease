@@ -118,7 +118,7 @@
             const result = document.getElementById('result');
             const clearBtn = document.getElementById('clearBtn');
 
-            form.addEventListener('submit', (e) => {
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const fd = new FormData(form);
                 const out = {};
@@ -135,15 +135,15 @@
                 })
             
                 const final_data = 
-                    fetch("/parse", {method: 'POST',headers: {'Content-type': 'application/json'},body: JSON.stringify(out)})
+                    fetch("/parse", {method: 'POST', headers: {'Content-type': 'application/json'}, body: JSON.stringify(out)})
                     .then(response => response.json())
-                    .then(data => 
-                        console.log("Sucess",data);
-                        result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(data,null,2)+ '</pre>';)
+                    .then(data => console.log("Sucess",data))
                     .catch(error => {
                         console.error("ERROR: ", error);
                     });
-                console.log(typeof(final_data))
+                console.log(typeof(final_data));
+                console.log(final_data.response.json());
+                result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(final_data.response.json(),null,2)+ '</pre>';
             });
 
             clearBtn.addEventListener('click', () => {
@@ -154,9 +154,4 @@
         </script>
     </body>
 </html>
-
-
-
-
-
 
