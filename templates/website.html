@@ -118,7 +118,7 @@
             const result = document.getElementById('result');
             const clearBtn = document.getElementById('clearBtn');
 
-            form.addEventListener('submit', async (e) => {
+            form.addEventListener('submit', e => {
                 e.preventDefault();
                 const fd = new FormData(form);
                 const out = {};
@@ -132,19 +132,16 @@
                     } else {
                         out[key] = value;
                     }
-                })
-            
-                const final_data = 
-                    fetch("/parse", {method: 'POST', headers: {'Content-type': 'application/json'}, body: JSON.stringify(out)})
-                    .then(response => response.json())
-                    .then(data => console.log("Sucess",data))
-                    .catch(error => {
-                        console.error("ERROR: ", error);
-                    });
-                console.log(typeof(final_data));
-                console.log(final_data.response.json());
-                result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(final_data.response.json(),null,2)+ '</pre>';
+            })
+            var final_data_2 
+            const final_data = fetch("/parse",{method: 'POST',headers: {'Content-type': 'application/json'},body: JSON.stringify(out)})
+            .then(response => 
+            response.json()).then(data => {final_data_2 = data;
+                result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(final_data_2,null,2)+ '</pre>';
             });
+            console.log(typeof(final_data))
+        }
+            );
 
             clearBtn.addEventListener('click', () => {
 
@@ -154,4 +151,5 @@
         </script>
     </body>
 </html>
+
 
