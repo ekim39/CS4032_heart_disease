@@ -39,7 +39,7 @@ from sklearn.base import clone
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from flask import Flask, request,jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
 print(torch.__version__)
