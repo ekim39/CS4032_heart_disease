@@ -133,7 +133,7 @@
                         out[key] = value;
                     }
             })
-            const final_data = fetch("http://127.0.0.1:5000/parse",{method: 'POST',headers: {'Content-type': 'application/json'},body: JSON.stringify(out)})
+            const final_data = fetch("/parse",{method: 'POST',headers: {'Content-type': 'application/json'},body: JSON.stringify(out)})
             .then(response => response.json()).then(data => console.log("Sucess",data));
             console.log(typeof(final_data))
             result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(final_data.response.json(),null,2)+ '</pre>';
@@ -148,3 +148,4 @@
         </script>
     </body>
 </html>
+
