@@ -151,6 +151,11 @@ plt.show()
 app = Flask(__name__)
 
 CORS(app)
+
+@app.route("/")
+def home():
+    return render_template("website.html")
+
 @app.route("/parse", methods = ['POST'])
 def flask_perdict():
     if request.is_json:
